@@ -6,6 +6,8 @@
  */
 #include <avr/io.h>
 
+#include "pcd8544/pcd8544.h"
+
 int main()
 {
 
