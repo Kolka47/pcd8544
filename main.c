@@ -16,13 +16,27 @@ int main()
 	DDRD |= (1<<PD5);
 	PORTD &= ~(1<<PD5);
 
+	Lcd_Init();
+
+	//_delay_ms(1000);
+
+	Lcd_Clr();
+	Lcd_Upd();
+
+	Lcd_Send(DATA, 128);
+	Lcd_Send(DATA, 254);
+	Lcd_Send(DATA, 253);
+
+
 
 	while(1)
 	{
 
-		PORTD ^= (1<<PD5);
+		//PORTD |= (1<<PD5);
+		//_delay_ms(1000);
+		//PORTD &= ~(1<<PD5);
 
-		_delay_ms(1000);
+
 	}
 }
 
