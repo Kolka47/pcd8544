@@ -9,7 +9,8 @@
 #include <avr/pgmspace.h>
 #include "pcd8544.h"
 
-volatile uint8_t lcd_buffer[LCD_BUF_SIZE];
+static uint8_t lcd_buffer[LCD_BUF_SIZE];
+static uint16_t lcd_location;
 
 
 
@@ -82,10 +83,31 @@ void Lcd_Clr()
 
 }
 
-void Lcd_Contrast(uint8_t cont)
+//Add letter to Lcd_buffer
+void Lcd_Char(uint8_t a)
 {
-	Lcd_Send(CMD, 0b00100001);	//extended instructions set
-	Lcd_Send(CMD, cont);
+
+	a -= 32;	//convert to ascii
+
+	for (uint8_t i = 0; i<5; i++, lcd_location++)
+		lcd_buffer[lcd_location] = Font[a][i];
+
+		lcd_buffer[lcd_location] = 0;	//add empty space after letter
+		lcd_location++;
+
 }
+
+void Lcd_Locate(uint8_t x, uint8_t y)
+{
+
+	//limit location to max values
+	if(x > 83) x = 83;
+	if(y > 5) y = 5;
+
+	lcd_location = 84*y + x;
+
+}
+
+
 
 
