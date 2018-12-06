@@ -33,6 +33,8 @@ void Lcd_Upd();
 void Lcd_Clr();
 void Lcd_Locate(uint8_t x, uint8_t y);
 void Lcd_Char(uint8_t a);
+void Lcd_Str(char *string);
+void Lcd_Int(int number);
 void Lcd_Send(uint8_t dc, uint8_t data);
 void Lcd_Contrast(uint8_t cont);
 

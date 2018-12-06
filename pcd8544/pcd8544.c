@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/pgmspace.h>
+#include <stdlib.h>
 #include "pcd8544.h"
 
 static uint8_t lcd_buffer[LCD_BUF_SIZE];
@@ -94,6 +95,25 @@ void Lcd_Char(uint8_t a)
 
 		lcd_buffer[lcd_location] = 0;	//add empty space after letter
 		lcd_location++;
+
+}
+
+void Lcd_Str(char *string)
+{
+	uint8_t i = 0;
+
+	while(string [i] != 0)
+	{
+		Lcd_Char(string[i]);
+		i++;
+	}
+}
+
+void Lcd_Int( int number)
+{
+	char temp[10];
+
+	Lcd_Str(itoa(number,temp,10));
 
 }
 

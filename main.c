@@ -27,13 +27,13 @@ int main()
 	Lcd_Locate(1,1);
 	Lcd_Char('B');
 	Lcd_Locate(2,2);
-	Lcd_Char('C');
+	Lcd_Str("RandOm Text");
 	Lcd_Locate(3,3);
-	Lcd_Char('D');
+	Lcd_Int(15);
 	Lcd_Locate(4,4);
 	Lcd_Char('E');
 	Lcd_Locate(5,5);
-	Lcd_Char('T'); 	Lcd_Char('E'); Lcd_Char('S'); Lcd_Char('T');
+	Lcd_Str("TEST");
 
 
 	Lcd_Upd();
