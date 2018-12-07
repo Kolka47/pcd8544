@@ -29,7 +29,7 @@ int main()
 	Lcd_Locate(2,2);
 	Lcd_Str("RandOm Text");
 	Lcd_Locate(3,3);
-	Lcd_Int(15);
+	Lcd_Int(15, BIN);
 	Lcd_Locate(4,4);
 	Lcd_Char('E');
 	Lcd_Locate(5,5);
@@ -38,15 +38,23 @@ int main()
 
 	Lcd_Upd();
 
+	_delay_ms(1000);
+
+
+
+	uint8_t a = 0;
 
 	while(1)
 	{
 
-		//PORTD |= (1<<PD5);
-		//_delay_ms(1000);
-		//PORTD &= ~(1<<PD5);
+		Lcd_Clr();
+		Lcd_Locate(0,0);
+		Lcd_Str("zmienna ");
+		Lcd_Int(a, HEX);
+		Lcd_Upd();
 
-
+		_delay_ms(1000);
+		a++;
 	}
 }
 

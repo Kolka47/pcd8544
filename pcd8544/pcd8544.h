@@ -27,6 +27,10 @@
 
 #define LCD_BUF_SIZE 504	//84pix*48pix / 8
 
+//for Lcd_Int() to determinate number system
+#define BIN 2
+#define DEC 10
+#define HEX 16
 
 void Lcd_Init();
 void Lcd_Upd();
@@ -34,7 +38,7 @@ void Lcd_Clr();
 void Lcd_Locate(uint8_t x, uint8_t y);
 void Lcd_Char(uint8_t a);
 void Lcd_Str(char *string);
-void Lcd_Int(int number);
+void Lcd_Int(int number, uint8_t system);
 void Lcd_Send(uint8_t dc, uint8_t data);
 void Lcd_Contrast(uint8_t cont);
 

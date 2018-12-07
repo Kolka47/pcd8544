@@ -98,34 +98,36 @@ void Lcd_Char(uint8_t a)
 
 }
 
+//Load strings to lcd_buffer
 void Lcd_Str(char *string)
 {
 	uint8_t i = 0;
 
-	while(string [i] != 0)
+	while(string [i] != 0)	//load strings till found 0
 	{
 		Lcd_Char(string[i]);
 		i++;
 	}
 }
 
-void Lcd_Int( int number)
+
+//Lcd_Int() accepts int values, then convert them to string by itoa() function
+// and pass the sring to Lcd_Str()
+// Second arguments determinate number system (2 bin, 10 dec, 16 hex)
+void Lcd_Int( int number, uint8_t system)
 {
-	char temp[10];
+	char temp[10];		//this arrray takes converted by itoa() string
 
-	Lcd_Str(itoa(number,temp,10));
-
+	Lcd_Str(itoa(number,temp,system));		//convert input int value to string
 }
 
 void Lcd_Locate(uint8_t x, uint8_t y)
 {
-
 	//limit location to max values
 	if(x > 83) x = 83;
 	if(y > 5) y = 5;
 
-	lcd_location = 84*y + x;
-
+	lcd_location = 84*y + x;	//convert x,y values to lcd_buffer position
 }
 
 
