@@ -104,10 +104,7 @@ void Lcd_Str(char *string)
 	uint8_t i = 0;
 
 	while(string [i] != 0)	//load strings till found 0
-	{
-		Lcd_Char(string[i]);
-		i++;
-	}
+		Lcd_Char(string[i++]);
 }
 
 
@@ -128,6 +125,12 @@ void Lcd_Locate(uint8_t x, uint8_t y)
 	if(y > 5) y = 5;
 
 	lcd_location = 84*y + x;	//convert x,y values to lcd_buffer position
+}
+
+
+void Lcd_Img(const uint8_t *picture)
+{
+	memcpy_P(lcd_buffer,picture,LCD_BUF_SIZE);
 }
 
 

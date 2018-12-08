@@ -7,8 +7,10 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/pgmspace.h>
 
 #include "pcd8544/pcd8544.h"
+#include "picture_bmp.h"
 
 int main()
 {
@@ -20,6 +22,8 @@ int main()
 
 	//_delay_ms(1000);
 
+
+
 	Lcd_Clr();
 
 	Lcd_Locate(0,0);
@@ -29,17 +33,20 @@ int main()
 	Lcd_Locate(2,2);
 	Lcd_Str("RandOm Text");
 	Lcd_Locate(3,3);
-	Lcd_Int(15, BIN);
+	Lcd_Int(10, DEC);
 	Lcd_Locate(4,4);
 	Lcd_Char('E');
 	Lcd_Locate(5,5);
 	Lcd_Str("TEST");
 
-
 	Lcd_Upd();
 
 	_delay_ms(1000);
 
+	Lcd_Img(Picture_Img);
+	Lcd_Upd();
+
+	_delay_ms(2000);
 
 
 	uint8_t a = 0;
