@@ -27,21 +27,12 @@ int main()
 	Lcd_Clr();
 
 	Lcd_Locate(0,0);
-	Lcd_Char('A');
-	Lcd_Locate(1,1);
-	Lcd_Char('B');
-	Lcd_Locate(2,2);
-	Lcd_Str("RandOm Text");
-	Lcd_Locate(3,3);
-	Lcd_Int(10, DEC);
-	Lcd_Locate(4,4);
-	Lcd_Char('E');
-	Lcd_Locate(5,5);
-	Lcd_Str("TEST");
+	Lcd_Str("adfgfdgfdgfdgfdfgfdgfdgfjhgjhgjhgjhgjhgjhgdgfdgfdgfdgdfgsgf");
+
 
 	Lcd_Upd();
 
-	_delay_ms(1000);
+	_delay_ms(5000);
 
 	Lcd_Img(Picture_Img);
 	Lcd_Upd();
@@ -56,8 +47,17 @@ int main()
 
 		Lcd_Clr();
 		Lcd_Locate(0,0);
-		Lcd_Str("zmienna ");
+		Lcd_Str("var ");
 		Lcd_Int(a, HEX);
+		Lcd_Locate(0,1);
+		Lcd_Str("var ");
+		Lcd_Int(a, DEC);
+		Lcd_Locate(0,2);
+		Lcd_Str("var ");
+		Lcd_Int(a, BIN);
+		Lcd_Locate(0,3);
+		Lcd_Char('~');
+
 		Lcd_Upd();
 
 		_delay_ms(1000);

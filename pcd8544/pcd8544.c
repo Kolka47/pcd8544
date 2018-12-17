@@ -91,20 +91,23 @@ void Lcd_Char(uint8_t a)
 	a -= 32;	//convert to ascii
 
 	for (uint8_t i = 0; i<5; i++, lcd_location++)
-		lcd_buffer[lcd_location] = Font[a][i];
+		lcd_buffer[lcd_location] = pgm_read_byte(&Font[a][i]);
 
-		lcd_buffer[lcd_location] = 0;	//add empty space after letter
 		lcd_location++;
+		if(lcd_location == 504) lcd_location = 0;
 
 }
 
 //Load strings to lcd_buffer
-void Lcd_Str(char *string)
+void Lcd_Str(char string[])
 {
 	uint8_t i = 0;
 
-	while(string [i] != 0)	//load strings till found 0
-		Lcd_Char(string[i++]);
+	while(string [i] != '\0' )	//load strings till found 0
+	{
+		Lcd_Char(string[i]);
+		i++;
+	}
 }
 
 
@@ -113,7 +116,7 @@ void Lcd_Str(char *string)
 // Second arguments determinate number system (2 bin, 10 dec, 16 hex)
 void Lcd_Int( int number, uint8_t system)
 {
-	char temp[10];		//this arrray takes converted by itoa() string
+	char temp[16];		//this arrray takes converted by itoa() string
 
 	Lcd_Str(itoa(number,temp,system));		//convert input int value to string
 }
