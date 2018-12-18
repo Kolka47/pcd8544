@@ -88,14 +88,28 @@ void Lcd_Clr()
 void Lcd_Char(uint8_t a)
 {
 
-	//a -= 32;	//convert to ascii
-
 	for (uint8_t i = 0; i<5; i++, lcd_location++)
 		lcd_buffer[lcd_location] = pgm_read_byte(&Font[a - 32][i]);
 
 		lcd_location++;
 		if(lcd_location == LCD_BUF_SIZE) lcd_location = 0;
 
+}
+
+// Add big letter to lcd_buffer
+void Lcd_BigChar(uint8_t a)
+{
+	uint8_t i;
+	uint16_t start_location = lcd_location;
+	for (i = 0; i<10; i++, lcd_location++)
+		lcd_buffer[lcd_location] = pgm_read_byte(&BigFont[a][i]);
+
+	lcd_location = start_location + 84;	//jump to next line
+
+	for (i = 10; i<20; i++, lcd_location++)
+		lcd_buffer[lcd_location] = pgm_read_byte(&BigFont[a][i]);
+
+	lcd_location += 2;
 }
 
 //Load strings to lcd_buffer

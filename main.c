@@ -24,11 +24,9 @@ int main()
 	//examples of use
 
 	Lcd_Locate(0,0);
-	Lcd_Char('A');
-	Lcd_Locate(1,1);
-	Lcd_Char(66);
+	Lcd_BigChar(0);
 	Lcd_Locate(2,2);
-	Lcd_Str("T");
+	Lcd_Char('T');
 	Lcd_Locate(3,3);
 	Lcd_Str("Test");
 	Lcd_Locate(4,4);
@@ -46,7 +44,7 @@ int main()
 	_delay_ms(2000);
 
 
-	uint8_t a = 0;
+	uint8_t a = 0, b = 0;
 
 	while(1)
 	{
@@ -62,11 +60,14 @@ int main()
 		Lcd_Str("var ");
 		Lcd_Int(a, BIN);
 		Lcd_Locate(0,3);
+		Lcd_BigChar(b);
 
 		Lcd_Upd();
 
 		_delay_ms(1000);
 		a++;
+		if (b < 9 ) b++;
+		else b = 0;
 	}
 }
 
